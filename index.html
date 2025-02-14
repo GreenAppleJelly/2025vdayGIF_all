@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="content">
+        <button id="musicButton">Play Music</button>  <!-- Music control button -->
         <img src="dudurosegive.gif" alt="Animated GIF" id="mainGif">
         <p id="mainSentence">Will you be my valentine?</p>
         <button id="yesButton">Yes</button>
@@ -18,25 +19,5 @@
       Your browser does not support the audio element.
     </audio>
     <script src="script.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var audio = document.getElementById('backgroundMusic');
-        audio.volume = 0.2;  // Set the volume to 20%
-        
-        // Function to start playing the background music
-        function playMusic() {
-            if (audio.paused) {
-                audio.play();
-            }
-            // Remove event listeners after the first play
-            document.getElementById('yesButton').removeEventListener('click', playMusic);
-            document.getElementById('noButton').removeEventListener('click', playMusic);
-        }
-
-        // Attach event listeners to buttons
-        document.getElementById('yesButton').addEventListener('click', playMusic);
-        document.getElementById('noButton').addEventListener('click', playMusic);
-    });
-    </script>
 </body>
 </html>
