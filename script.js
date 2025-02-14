@@ -1,7 +1,7 @@
 let currentIndex = 0;
 
 const sentences = [
-    "Strawberry, will you be my valentine?",
+    "Will you be my valentine?",
     "Even if I ask nicely?",
     "Pretty please?",
     "I'll be sad TwT",
