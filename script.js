@@ -59,6 +59,6 @@ document.getElementById('noButton').addEventListener('click', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    var audio = document.getElementById('backgroundMusic');
+    var audio = document.getElementById('LoveNote.mp3');
     audio.volume = 0.2;
 });
