@@ -7,15 +7,13 @@ const sentences = [
     "I'll be sad TwT", // Sentence4
     "TwT", // Sentence5
     "I'M SO HAPPY!!", // SentenceYES
-    // Add more as needed up to sentence8
 ];
 
 const button2Texts = [
     "No",      // Text1
-    "Nope",// Text2
+    "Nope",    // Text2
     "Still No", // Text3
-    "No", // Text4
-    // Add more corresponding texts for each sentence
+    "No",       // Text4
 ];
 
 const gifPaths = [
@@ -23,17 +21,28 @@ const gifPaths = [
     "dudujumprizz.gif", // ifno GIF
     "dudusadcute.gif", // finalno GIF
     "duduehugslove.gif", // ifyes GIF
-    // Add paths for more GIFs as needed
 ];
+
+function playMusic() {
+    let audio = document.getElementById('backgroundMusic');
+    if (audio.paused) {
+        audio.play();
+    }
+    // Remove event listeners after the first play
+    document.getElementById('yesButton').removeEventListener('click', playMusic);
+    document.getElementById('noButton').removeEventListener('click', playMusic);
+}
 
 document.getElementById('yesButton').addEventListener('click', function() {
     document.getElementById('mainGif').src = gifPaths[3]; // Change to ifyes GIF
     document.getElementById('mainSentence').textContent = sentences[5]; // Change to final yes sentence
     this.style.display = 'none'; // Remove yes button
     document.getElementById('noButton').style.display = 'none'; // Remove no button
+    playMusic(); // Play music on button click
 });
 
 document.getElementById('noButton').addEventListener('click', function() {
+    playMusic(); // Play music on button click
     currentIndex++;  // Increment the index to move to the next sentence and button text
 
     if (currentIndex < sentences.length - 1) {  // Check if it's not the last no
@@ -42,7 +51,7 @@ document.getElementById('noButton').addEventListener('click', function() {
         this.textContent = button2Texts[currentIndex - 1];  // Update button text
     } else {
         // Handle the last no scenario
-        document.getElementById('mainSentence').textContent = sentences[4];
+        document.getElementById('mainSentence').textContent = sentences[4]; // Directly use index 4 for "TwT"
         document.getElementById('mainGif').src = gifPaths[2]; // Change to finalno GIF
         this.style.display = 'none';  // Remove no button
         document.getElementById('yesButton').style.display = 'none';  // Remove yes button as well
@@ -50,7 +59,6 @@ document.getElementById('noButton').addEventListener('click', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    var audio = document.querySelector('audio');
+    var audio = document.getElementById('backgroundMusic');
     audio.volume = 0.2;  // Set the volume to 20%
 });
-
