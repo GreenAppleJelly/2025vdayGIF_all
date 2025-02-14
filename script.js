@@ -42,10 +42,15 @@ document.getElementById('noButton').addEventListener('click', function() {
         this.textContent = button2Texts[currentIndex - 1];  // Update button text
     } else {
         // Handle the last no scenario
-        document.getElementById('mainSentence').textContent = sentences[currentIndex];
+        document.getElementById('mainSentence').textContent = sentences[4];
         document.getElementById('mainGif').src = gifPaths[2]; // Change to finalno GIF
         this.style.display = 'none';  // Remove no button
         document.getElementById('yesButton').style.display = 'none';  // Remove yes button as well
     }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var audio = document.querySelector('audio');
+    audio.volume = 0.2;  // Set the volume to 20%
 });
 
