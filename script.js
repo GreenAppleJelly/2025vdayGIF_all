@@ -1,64 +1,64 @@
-let currentIndex = 0;  // Properly initialize currentIndex
+let currentIndex = 0;
 
 const sentences = [
-    "Strawberry, will you be my valentine?", // Sentence1
-    "Even if I ask nicely?",        // Sentence2
-    "Pretty please?", // Sentence3
-    "I'll be sad TwT", // Sentence4
-    "TwT", // Sentence5
-    "I'M SO HAPPY!!", // SentenceYES
+    "Strawberry, will you be my valentine?",
+    "Even if I ask nicely?",
+    "Pretty please?",
+    "I'll be sad TwT",
+    "TwT",
+    "I'M SO HAPPY!!",
 ];
 
 const button2Texts = [
-    "No",      // Text1
-    "Nope",    // Text2
-    "Still No", // Text3
-    "No",       // Text4
+    "No",
+    "Nope",
+    "Still No",
+    "No",
 ];
 
 const gifPaths = [
-    "dudurosegive.gif", // Initial GIF
-    "dudujumprizz.gif", // ifno GIF
-    "dudusadcute.gif", // finalno GIF
-    "duduehugslove.gif", // ifyes GIF
+    "dudurosegive.gif",
+    "dudujumprizz.gif",
+    "dudusadcute.gif",
+    "duduehugslove.gif",
 ];
 
-function playMusic() {
+// Function to toggle music play/pause
+function toggleMusic() {
     let audio = document.getElementById('backgroundMusic');
     if (audio.paused) {
         audio.play();
+        document.getElementById('musicButton').textContent = "Pause Music"; // Change button text to "Pause"
+    } else {
+        audio.pause();
+        document.getElementById('musicButton').textContent = "Play Music"; // Change button text to "Play"
     }
-    // Remove event listeners after the first play
-    document.getElementById('yesButton').removeEventListener('click', playMusic);
-    document.getElementById('noButton').removeEventListener('click', playMusic);
 }
 
+document.getElementById('musicButton').addEventListener('click', toggleMusic);
+
 document.getElementById('yesButton').addEventListener('click', function() {
-    document.getElementById('mainGif').src = gifPaths[3]; // Change to ifyes GIF
-    document.getElementById('mainSentence').textContent = sentences[5]; // Change to final yes sentence
-    this.style.display = 'none'; // Remove yes button
-    document.getElementById('noButton').style.display = 'none'; // Remove no button
-    playMusic(); // Play music on button click
+    document.getElementById('mainGif').src = gifPaths[3];
+    document.getElementById('mainSentence').textContent = sentences[5];
+    this.style.display = 'none';
+    document.getElementById('noButton').style.display = 'none';
 });
 
 document.getElementById('noButton').addEventListener('click', function() {
-    playMusic(); // Play music on button click
-    currentIndex++;  // Increment the index to move to the next sentence and button text
-
-    if (currentIndex < sentences.length - 1) {  // Check if it's not the last no
+    currentIndex++;
+    if (currentIndex < sentences.length - 1) {
         document.getElementById('mainSentence').textContent = sentences[currentIndex];
-        document.getElementById('mainGif').src = gifPaths[1]; // Maintain ifno GIF for all nos except the last
-        this.textContent = button2Texts[currentIndex - 1];  // Update button text
+        document.getElementById('mainGif').src = gifPaths[1];
+        this.textContent = button2Texts[currentIndex - 1];
     } else {
-        // Handle the last no scenario
-        document.getElementById('mainSentence').textContent = sentences[4]; // Directly use index 4 for "TwT"
-        document.getElementById('mainGif').src = gifPaths[2]; // Change to finalno GIF
-        this.style.display = 'none';  // Remove no button
-        document.getElementById('yesButton').style.display = 'none';  // Remove yes button as well
+        document.getElementById('mainSentence').textContent = sentences[4];
+        document.getElementById('mainGif').src = gifPaths[2];
+        this.style.display = 'none';
+        document.getElementById('yesButton').style.display = 'none';
     }
 });
 
 document.addEventListener('DOMContentLoaded', function() {
     var audio = document.getElementById('backgroundMusic');
-    audio.volume = 0.2;  // Set the volume to 20%
+    audio.volume = 0.2;
 });
