@@ -13,7 +13,7 @@
         <button id="yesButton">Yes</button>
         <button id="noButton">No</button>
     </div>
-    <audio autoplay loop id="backgroundMusic">
+    <audio loop id="backgroundMusic">
       <source src="LoveNote.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
@@ -22,6 +22,20 @@
     document.addEventListener('DOMContentLoaded', function() {
         var audio = document.getElementById('backgroundMusic');
         audio.volume = 0.2;  // Set the volume to 20%
+        
+        // Function to start playing the background music
+        function playMusic() {
+            if (audio.paused) {
+                audio.play();
+            }
+            // Remove event listeners after the first play
+            document.getElementById('yesButton').removeEventListener('click', playMusic);
+            document.getElementById('noButton').removeEventListener('click', playMusic);
+        }
+
+        // Attach event listeners to buttons
+        document.getElementById('yesButton').addEventListener('click', playMusic);
+        document.getElementById('noButton').addEventListener('click', playMusic);
     });
     </script>
 </body>
