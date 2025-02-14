@@ -1,3 +1,5 @@
+let currentIndex = 0;  // Properly initialize currentIndex
+
 const sentences = [
     "Will you be my valentine?", // Sentence1
     "Even if I ask nicely?",        // Sentence2
