@@ -1,13 +1,25 @@
 #content {
     text-align: center;
+    padding-top: 20px;  // Adds some space at the top for better visual layout
 }
 
 button {
     margin: 10px;
-    padding: 10px;
+    padding: 10px 20px;  // Increased padding for better touch target size
+    font-size: 16px;  // Larger text for readability
+    cursor: pointer;  // Cursor indicates clickable items
+    transition: all 0.3s ease;  // Smooth transition for property changes
+    border: none;  // Remove default border
+    background-color: #4CAF50;  // A pleasant green background
+    color: white;  // Text color is white for contrast
+    border-radius: 5px;  // Rounded corners
 }
 
-#yesButton, #noButton {
-    width: 100px;
-    height: 50px;
+button:hover {
+    background-color: #45a049;  // Slightly darker green on hover
+}
+
+img {
+    max-width: 100%;  // Ensures the image is responsive and fits its container
+    height: auto;  // Maintain aspect ratio
 }
